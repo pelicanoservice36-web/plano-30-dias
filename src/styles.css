@@ -1,0 +1,150 @@
+/* plano-30-dias — base mínima portada de esteiraergometrica.com/src/styles.css.
+   Só o necessário para esta página: fonte, reset, cookie-banner e botões.
+   O visual da própria oferta (cores, grid, hero) é todo escopado dentro de
+   src/pages/index.astro, igual já era na versão dentro do site principal. */
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/manrope-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --bg:            #F8FAFC;
+  --surface:       #FFFFFF;
+  --ink:           #111827;
+  --muted:         #475569;
+  --muted-2:       #94A3B8;
+  --border-strong: #CBD5E1;
+  --surface-sunk:  #F1F5F9;
+
+  --primary:       #0B3B82;
+  --accent:        #15803D;
+  --accent-ink:    #0F5C2C;
+
+  --sans: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --radius-sm: 6px;
+  --radius-lg: 16px;
+  --shadow-pop: 0 4px 10px rgba(17, 24, 39, 0.06), 0 20px 40px -18px rgba(17, 24, 39, 0.18);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-synthesis-weight: none;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2.5px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------- Rodapé mínimo ---------- */
+
+.lp-foot {
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.lp-foot a { color: var(--primary); text-decoration: underline; }
+
+/* ---------- Botões genéricos (usados só pelo cookie-banner aqui) ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(15, 92, 44, 0.15);
+}
+.btn-primary:hover { background: var(--accent-ink); color: #fff; }
+
+.btn-secondary {
+  background: var(--surface);
+  color: var(--ink);
+  border-color: var(--border-strong);
+}
+.btn-secondary:hover { background: var(--surface-sunk); border-color: var(--muted-2); }
+
+/* ---------- Aviso de cookies ---------- */
+
+.cookie-banner {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 50;
+  width: 22rem;
+  max-width: calc(100vw - 2.5rem);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+  padding: 1.25rem;
+}
+
+.cookie-banner__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.cookie-banner__text {
+  margin: 0 0 1.125rem;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.cookie-banner__text a { color: var(--primary); }
+
+.cookie-banner__actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.cookie-banner__actions .btn { flex: 1; padding-inline: 1rem; }
+
+@media (max-width: 26rem) {
+  .cookie-banner { left: 0.75rem; bottom: 0.75rem; }
+}
