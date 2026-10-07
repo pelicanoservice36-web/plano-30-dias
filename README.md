@@ -34,13 +34,16 @@ e publique. As duas coisas acima se resolvem sozinhas.
 
 ## Deploy
 
-Ainda não conectado a nenhum provedor. Passos (Cloudflare Pages, mesmo
-provedor do site principal):
+Domínio definido: **app.esteiraergometrica.com**. `astro.config.mjs` já usa
+essa URL. Ainda não conectado a nenhum provedor — passos (Cloudflare Pages,
+mesmo provedor do site principal, mesma zona DNS):
 
 1. No painel do Cloudflare → Workers & Pages → Create → Pages → Connect to Git.
 2. Selecione o repositório `plano-30-dias` no GitHub.
 3. Build command: `npm run build`. Build output directory: `dist`.
-4. Cada push em `main` publica automaticamente.
-5. Quando tiver um domínio definitivo, adicione como Custom Domain e
-   atualize `site` em `astro.config.mjs` para a URL real (hoje está com um
-   placeholder `.pages.dev`).
+4. Depois do primeiro deploy, na aba **Custom Domains** do projeto Pages,
+   adicione `app.esteiraergometrica.com`. Como o domínio raiz já está na
+   mesma conta Cloudflare, o registro DNS (CNAME) costuma ser criado
+   automaticamente; se não for, criar um CNAME `app` apontando para o
+   endereço `*.pages.dev` do projeto, na zona de `esteiraergometrica.com`.
+5. Cada push em `main` publica automaticamente depois disso.
